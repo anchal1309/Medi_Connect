@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medi-Connect - New Registration For Doctor</title>
+    <style>
+        /* Reset styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Background styling */
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #e3f2fd;
+        }
+
+        /* Header styling */
+        .header {
+            display: flex;
+            width: 100%;
+            background-color: #0d47a1;
+            color: #fff;
+            padding: 10px;
+            align-items: center;
+            justify-content: space-between;
+            /* text-align: center; */
+            /* font-size: 28px; */
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            width: 60px;
+        }
+
+        .nav {
+            margin: 0 15px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            /* flex: 1; */
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+            /* color: #f2f6f9; */
+
+        }
+
+        .nav a {
+            color: #ddd;
+        }
+
+        /* Footer styling */
+        footer {
+            width: 100%;
+            background-color: #0d47a1;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+
+        /* Container styling */
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #90caf9;
+            margin: 20px;
+
+        }
+
+        /* Header styling inside the container */
+        .container h2 {
+            text-align: center;
+            color: #0d47a1;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        /* Input styling */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            color: #0d47a1;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #90caf9;
+            font-size: 14px;
+            color: #333;
+            outline: none;
+        }
+
+        /* Phone and OTP button styling */
+        .phone-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .phone-group input {
+            flex: 1;
+        }
+
+        .btn-otp {
+            background-color: #90caf9;
+            color: #0d47a1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* Main button styling */
+        .btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn-submit {
+            background-color: #0d47a1;
+            color: #fff;
+            margin-top: 10px;
+        }
+
+        .btn-alt {
+            background-color: #90caf9;
+            color: #0d47a1;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* Additional styles */
+        .new-registration {
+            text-align: center;
+            margin-top: 15px;
+            color: #0d47a1;
+            font-size: 14px;
+        }
+
+        footer {
+            width: 100%;
+            background-color: #0d47a1;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            position: relative;
+            /* Change from fixed to relative */
+            margin-top: auto;
+            /* Added to push the footer to the bottom */
+        }
+    </style>
+    <!-- Adding Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo-container">
+            <img src="./logo.jpeg" alt="Logo" class="logo">
+        </div>
+        <h1 class="title">MediConnect</h1>
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="#about">About</a>
+            <a href="#resources">Resources</a>
+        </nav>
+
+    </header>
+
+    <!-- Container -->
+    <div class="container">
+        <h2>LOGIN - Medi-Connect</h2>
+        <form>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required />
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <div class="phone-group">
+                    <input type="tel" id="phone" placeholder="Enter your phone number" required />
+                    <button type="button" class="btn-otp">Send OTP</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="otp">OTP</label>
+                <input type="text" id="otp" placeholder="Enter OTP" required />
+            </div>
+            <button type="submit" class="btn btn-submit">Submit</button>
+        </form>
+        <div class="new-registration">
+            <button class="btn btn-alt">New Registration</button>
+        </div>
+    </div>
+    <br><br>
+    <!-- Footer -->
+    <footer>
+        <div class="footer">
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>123 Main Street, City, State, Zip</p>
+                <p>Phone: (123) 456-7890</p>
+                <p>Email: info@yourhealthcareclinic.com</p>
+            </div>
+            <div class="footer-social">
+                <h4>Follow Us</h4>
+                <ul>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </ul>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2023 Your Healthcare Clinic. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>

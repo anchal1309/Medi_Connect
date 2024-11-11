@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medi-Connect - Doctor Registration</title>
+    <style>
+        /* Reset styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Background styling */
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            min-height: 100vh;
+            background: #e3f2fd url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+        }
+
+        .header {
+            display: flex;
+            width: 100%;
+            background-color: #0d47a1;
+            color: #fff;
+            padding: 10px;
+            align-items: center;
+            justify-content: space-between;
+            /* text-align: center; */
+            /* font-size: 28px; */
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            width: 60px;
+        }
+
+        .nav {
+            margin: 0 15px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            /* flex: 1; */
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+            /* color: #f2f6f9; */
+
+        }
+
+        .nav a {
+            color: #ddd;
+        }
+
+        /* Container styling */
+        .container {
+            width: 100%;
+            max-width: 700px;
+            /* Increased width for better readability */
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border: 1px solid #90caf9;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        /* Header styling inside the container */
+        .container h2 {
+            color: #0d47a1;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        /* Input styling */
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            /* Added for horizontal layout */
+            align-items: center;
+            /* Added for vertical alignment */
+        }
+
+        .form-group label {
+            width: 150px;
+            /* Adjusted width for labels */
+            font-size: 14px;
+            color: #0d47a1;
+            margin-right: 10px;
+            /* Added margin for spacing */
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            flex: 1;
+            /* Make inputs flexible to fill remaining space */
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #90caf9;
+            font-size: 14px;
+            color: #333;
+            outline: none;
+        }
+
+        /* Icon styling with improved spacing */
+        .form-group i {
+            margin-right: 10px;
+            /* Added margin for spacing */
+            font-size: 18px;
+            color: #0d47a1;
+        }
+
+        .btn-otp {
+            background-color: #90caf9;
+            color: #0d47a1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* Improved button styling */
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #0d47a1;
+            color: #fff;
+            margin-top: 15px;
+            transition: background 0.3s ease;
+        }
+
+        footer {
+            width: 100%;
+            background-color: #0d47a1;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            position: relative;
+            /* Change from fixed to relative */
+            margin-top: auto;
+            /* Added to push the footer to the bottom */
+        }
+    </style>
+    <!-- Adding Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo-container">
+            <img src="./logo.jpeg" alt="Logo" class="logo">
+        </div>
+        <h1 class="title">MediConnect</h1>
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="#about">About</a>
+            <a href="#resources">Resources</a>
+        </nav>
+
+    </header>
+
+    <!-- Container -->
+    <div class="container">
+        <h2>Doctor Registration Form</h2>
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <i class="fas fa-user-md"></i>
+                <input type="text" id="name" placeholder="Enter your name" required />
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <i class="fas fa-phone"></i>
+                <div class="phone-group">
+                    <input type="tel" id="phone" placeholder="Enter your phone number" required />
+                    <button type="button" class="btn-otp">Send OTP</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="otp">OTP</label>
+                <i class="fas fa-key"></i>
+                <input type="text" id="otp" placeholder="Enter OTP" required />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" placeholder="Enter your email" required />
+            </div>
+            <div class="form-group">
+                <label for="specialty">Specialty</label>
+                <i class="fas fa-stethoscope"></i>
+                <select id="specialty" required>
+                    <option value="" disabled selected>Select your specialty</option>
+                    <option value="cardiology">Cardiology</option>
+                    <option value="neurology">Neurology</option>
+                    <option value="orthopedics">Orthopedics</option>
+                    <option value="pediatrics">Pediatrics</option>
+                    <option value="general">General Medicine</option>
+                    <option value="derma">Dermatologist</option>
+                    <option value="ENT">ENT</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="location">Location</label>
+                <i class="fas fa-map-marker-alt"></i>
+                <input type="text" id="location" placeholder="Enter your clinic location" required />
+            </div>
+            <div class="form-group">
+                <label for="available-time">Available Time</label>
+                <i class="fas fa-clock"></i>
+                <input type="time" id="available-time" required />
+            </div>
+            <div class="form-group">
+                <label for="fees">Consultation Fees</label>
+                <i class="fas fa-dollar-sign"></i>
+                <input type="number" id="fees" placeholder="Enter your consultation fees" required />
+            </div>
+            <button type="submit" class="btn">Register</button>
+        </form>
+    </div>
+    <br><br><br>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer">
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>123 Main Street, City, State, Zip</p>
+                <p>Phone: (123) 456-7890</p>
+                <p>Email: info@yourhealthcareclinic.com</p>
+            </div>
+            <div class="footer-social">
+                <h4>Follow Us</h4>
+                <ul>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </ul>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2023 Your Healthcare Clinic. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>

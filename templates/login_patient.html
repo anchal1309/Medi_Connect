@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    
+    <style>
+        /* Reset styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #e3f2fd;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    width: 300px;
+}
+
+.container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0d47a1;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form-group button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0d47a1;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-group p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.form-group a {
+    color: #0d47a1;
+    text-decoration: none;
+}
+
+.btn{
+    background-color: lightskyblue;
+    padding: 5px;
+    width: auto;
+    border-color: lightskyblue;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    
+}
+     </style>
+ </head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="Enter your phone number" required>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" required>
+            </div>
+            <button class="btn" type="submit">Login</button>
+            <form action="{{ url_for('patient') }}" method="get">
+                <button class="btn btn-alt" type="submit" class="patient-button">Register</button>
+            </form>
+            <!-- <p>New User? <a href="patient.html">Register</a></p> -->
+        </form>
+    </div>
+</body>
+</html>

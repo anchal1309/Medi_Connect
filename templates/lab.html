@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medi-Connect - Lab Registration</title>
+    <style>
+        /* Reset styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Background styling */
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            min-height: 100vh;
+            background: #e3f2fd url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+        }
+
+        /* Header styling */
+        header {
+            width: 100%;
+            background-color: #0d47a1;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer styling */
+        footer {
+            width: 100%;
+            background-color: #0d47a1;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+
+        /* Container styling */
+        .container {
+            width: 100%;
+            max-width: 700px;
+            /* Increased width for better readability */
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border: 1px solid #90caf9;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        /* Header styling inside the container */
+        .container h2 {
+            color: #0d47a1;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        /* Input styling */
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            /* Added for horizontal layout */
+            align-items: center;
+            /* Added for vertical alignment */
+        }
+
+        .form-group label {
+            width: 150px;
+            /* Adjusted width for labels */
+            font-size: 14px;
+            color: #0d47a1;
+            margin-right: 10px;
+            /* Added margin for spacing */
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            flex: 1;
+            /* Make inputs flexible to fill remaining space */
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #90caf9;
+            font-size: 14px;
+            color: #333;
+            outline: none;
+        }
+
+        /* Icon styling with improved spacing */
+        .form-group i {
+            margin-right: 10px;
+            /* Added margin for spacing */
+            font-size: 18px;
+            color: #0d47a1;
+        }
+
+        .btn-otp {
+            background-color: #90caf9;
+            color: #0d47a1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* Improved button styling */
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #0d47a1;
+            color: #fff;
+            margin-top: 15px;
+            transition: background 0.3s ease;
+        }
+
+        /* Add test button styling */
+        .btn-add-test {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-bottom: 15px;
+            display: inline-block;
+            transition: background 0.3s ease;
+        }
+
+        .btn-add-test:hover {
+            background-color: #388e3c;
+        }
+
+        /* Dynamic test section styling */
+        .test-section {
+            background-color: #f0f4ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+    <!-- Adding Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header>Medi-Connect - Lab Registration</header>
+
+    <!-- Container -->
+    <div class="container">
+        <h2>Lab Registration Form</h2>
+        <form id="lab-form">
+            <div class="form-group">
+                <label for="name">Lab Name</label>
+                <i class="fas fa-flask"></i>
+                <input type="text" id="name" placeholder="Enter your lab name" required />
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <i class="fas fa-phone"></i>
+                <div class="phone-group">
+                    <input type="tel" id="phone" placeholder="Enter your phone number" required />
+                    <button type="button" class="btn-otp">Send OTP</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="otp">OTP</label>
+                <i class="fas fa-key"></i>
+                <input type="text" id="otp" placeholder="Enter OTP" required />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" placeholder="Enter your email" required />
+            </div>
+            <div class="form-group">
+                <label for="location">Location</label>
+                <i class="fas fa-map-marker-alt"></i>
+                <input type="text" id="location" placeholder="Enter your lab location" required />
+            </div>
+
+            <!-- Section to add multiple tests -->
+            <div id="test-section-container">
+                <div class="test-section">
+                    <h3>Test Details</h3>
+                    <div class="form-group">
+                        <label for="test-type">Type of Test</label>
+                        <i class="fas fa-vial"></i>
+                        <input type="text" name="test-type[]" placeholder="Enter test type (e.g., Blood Test)"
+                            required />
+                    </div>
+                    <div class="form-group">
+                        <label for="instructions">Basic Instructions</label>
+                        <i class="fas fa-info-circle"></i>
+                        <textarea name="instructions[]" placeholder="Enter any specific instructions for this test"
+                            required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="available-time">Available Time For Test</label>
+                        <i class="fas fa-clock"></i>
+                        <input type="time" name="available-time[]" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="fees">Test Fees</label>
+                        <i class="fas fa-dollar-sign"></i>
+                        <input type="number" name="fees[]" placeholder="Enter fees for this test" required />
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn-add-test" onclick="addTestSection()">
+                + Add Another Test
+            </button>
+
+            <button type="submit" class="btn">Register Lab</button>
+        </form>
+    </div>
+
+    <br><br><br>
+    <!-- Footer -->
+    <footer>Contact us: info@medi-connect.com | Call: +1-234-567-8900</footer>
+
+    <!-- JavaScript to add dynamic test sections -->
+    <script>
+        function addTestSection() {
+            const container = document.getElementById("test-section-container");
+            const testSection = document.createElement("div");
+            testSection.className = "test-section";
+            testSection.innerHTML = `
+            <h3>Test Details</h3>
+            <div class="form-group">
+                <label for="test-type">Type of Test</label>
+                <i class="fas fa-vial"></i>
+                <input type="text" name="test-type[]" placeholder="Enter test type (e.g., Blood Test)" required>
+            </div>
+            <div class="form-group">
+                <label for="instructions">Basic Instructions</label>
+                <i class="fas fa-info-circle"></i>
+                <textarea name="instructions[]" placeholder="Enter any specific instructions for this test" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="available-time">Available Time</label>
+                <i class="fas fa-clock"></i>
+                <input type="time" name="available-time[]" required>
+            </div>
+            <div class="form-group">
+                <label for="fees">Test Fees</label>
+                <i class="fas fa-dollar-sign"></i>
+                <input type="number" name="fees[]" placeholder="Enter fees for this test" required>
+            </div>
+        `;
+            container.appendChild(testSection);
+        }
+    </script>
+</body>
+
+</html>

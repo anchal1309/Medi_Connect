@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthCare</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .top {
+            text-align: center;
+            background-color: lightcoral;
+            padding: 10px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #0d47a1;
+        }
+
+        .logo {
+            width: 60px;
+        }
+
+        .nav {
+            margin: 0 15px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            /* flex: 1; */
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+            /* color: #f2f6f9; */
+
+        }
+
+        .nav a {
+            color: #ddd;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 80px);
+            background-color: #f2f6f9;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .button {
+            width: 200px;
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #d9effc;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+        }
+
+        .button-image {
+            width: 130px;
+            height: 150px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+
+        .button span {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        #chatbot {
+            margin-left: 100px;
+        }
+
+        #chat-history {
+            background-color: white;
+            height: 250px;
+            overflow-y: scroll;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+        }
+
+        #user-input {
+            width: calc(100% - 90px);
+            padding: 10px;
+            margin-right: 10px;
+        }
+
+        #send-message {
+            padding: 10px 20px;
+        }
+
+        #recommender {
+            margin-top: 40px;
+        }
+
+        #recommendations-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #recommendations-list li {
+            background-color: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+        }
+
+        .footer {
+            background-color: #0d47a1;
+            width: 100%;
+            height: auto;
+            padding: 10px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="App">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-container">
+                <img src="/env/static/logo.jpg" alt="Logo" class="logo">
+            </div>
+            <h1 class="title">MediConnect</h1>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="#about">About</a>
+                <a href="#resources">Resources</a>
+            </nav>
+        </header>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- <img class="bg-img" src="path-to-background/background-img.jpg" alt="Background Image"> -->
+            <div class="button-container">
+
+                <!-- Doctor Button -->
+                <form action="{{ url_for('login_doctor') }}" method="get">
+                    <button class="button" type="submit" id="doctor-button">Doctor</button>
+                </form>
+                <!-- <a href="login_doctor.html">
+                    <div class="button" id="doctor-button">
+                        <img src="/env/static/doc.jpg" alt="Doctor" class="button-image">
+                        <span>Doctor</span>
+                    </div> -->
+                <!-- </a> -->
+
+                <form action="{{ url_for('login_patient') }}" method="get">
+                    <button class="button" type="submit" id="patient-button">Patient</button>
+                </form>
+                                <!-- Patients Button -->
+                <!-- <a href="patient.html">
+                <div class="button" id="patients-button">
+                    <img src="/env/static/patient.jpg" alt="Patients" class="button-image">
+                    <span>Patients</span>
+                </div>
+                </a> -->
+
+                <!-- Labs Button -->
+                <form action="{{ url_for('login_lab') }}" method="get">
+                    <button class="button"  type="submit" id="lab-button">Lab</button>
+                </form>
+
+                <!-- <a href="lab.html">
+                <div class="button" id="labs-button">
+                    <img src="/env/static/lab.jpg" alt="Labs" class="button-image">
+                    <span>Labs</span>
+                </div>
+                </a> -->
+
+
+                <!-- Chatbot interface -->
+                <div id="chatbot">
+                    <div id="chat-history"></div>
+                    <input type="text" id="user-input" placeholder="Ask me anything...">
+                    <button id="send-message">Send</button>
+                </div>
+
+
+            </div>
+        </main>
+        <!-- Recommender System -->
+        <div id="recommender">
+            <h3>Recommendations for You</h3>
+            <ul id="recommendations-list">
+                <!-- Recommendations will be displayed here -->
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- <footer class="footer">
+    <p>Healthcare System by Your Company</p>
+</footer> -->
+    <footer>
+        <footer>
+            <div class="footer">
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p>123 Main Street, City, State, Zip</p>
+                    <p>Phone: (123) 456-7890</p>
+                    <p>Email: info@yourhealthcareclinic.com</p>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="copyright">&copy; 2023 Your Healthcare Clinic. All Rights Reserved.</p>
+        </footer>
+        </div>
+</body>
+
+</html>
