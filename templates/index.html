@@ -166,6 +166,8 @@
                 <a href="./index.html">Home</a>
                 <a href="./about.html">About</a>
                 <a href="./resources.html">Resources</a>
+                <a href="./recommend.html">Recommender System</a>
+
             </nav>
 
         </header>
@@ -204,6 +206,61 @@
                     <input type="text" id="user-input" placeholder="Ask me anything...">
                     <button id="send-message">Send</button>
                 </div>
+                <!--  -->
+                    <!-- Recommended doctor and lab will be displayed here -->
+                </div>
+                <script>
+                    // Handle the form submission and fetch recommendations
+                    document.getElementById('recommendation-form').addEventListener('submit', function(event) {
+                        event.preventDefault();  // Prevent form from refreshing the page
+                        
+                        const symptoms = document.getElementById('symptoms').value;
+                        const location = document.getElementById('location').value;
+                        
+                        // Make a POST request to the Flask backend
+                        fetch('/recommend', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                symptoms: symptoms.split(',').map(symptom => symptom.trim()),
+                                location: location
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            const recommendationsDiv = document.getElementById('recommendations');
+                            recommendationsDiv.innerHTML = '';  // Clear previous recommendations
+                            
+                            if (data.doctor && data.lab) {
+                                // Display doctor recommendation
+                                const doctor = data.doctor;
+                                recommendationsDiv.innerHTML += `
+                                    <h2>Recommended Doctor</h2>
+                                    <p><strong>Name:</strong> ${doctor.name}</p>
+                                    <p><strong>Specialization:</strong> ${doctor.specialization}</p>
+                                    <p><strong>Location:</strong> ${doctor.location}</p>
+                                `;
+                                
+                                // Display lab recommendation
+                                const lab = data.lab;
+                                recommendationsDiv.innerHTML += `
+                                    <h2>Recommended Lab</h2>
+                                    <p><strong>Name:</strong> ${lab.name}</p>
+                                    <p><strong>Tests Available:</strong> ${lab.tests_available.join(', ')}</p>
+                                    <p><strong>Location:</strong> ${lab.location}</p>
+                                `;
+                            } else {
+                                recommendationsDiv.innerHTML = `<p>No suitable doctor or lab found for your symptoms and location.</p>`;
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            document.getElementById('recommendations').innerHTML = '<p>Something went wrong. Please try again.</p>';
+                        });
+                    });
+                </script>
 
 
             </div>

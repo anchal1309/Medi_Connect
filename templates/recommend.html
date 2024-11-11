@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Healthcare Recommender System - MediConnect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Ensure the whole screen is covered */
+        .App {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: #f7f7f7;
+        }
+
+        /* Header styling */
+        .header {
+            display: flex;
+            width: 100%;
+            background-color: #0d47a1;
+            color: #fff;
+            padding: 10px;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            width: 60px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 20px;
+            font-weight: bold;
+        }
+
+        .nav a {
+            color: #ddd;
+            text-decoration: none;
+        }
+
+        /* Main container styling */
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            max-width: 600px;
+            width: 100%;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        h1 {
+            color: #0d47a1;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Recommendations section */
+        .recommendations {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .recommendations h2 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .recommendations p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #0d47a1;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        .footer-social a {
+            color: #ddd;
+            margin: 0 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="App">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-container">
+                <img src="/static/logo.jpg" alt="Logo" class="logo" />
+            </div>
+            <h1 class="title">MediConnect</h1>
+            <nav class="nav">
+                <a href="./index.html">Home</a>
+                <a href="./about.html">About</a>
+                <a href="./resources.html">Resources</a>
+                <a href="./recommend.html">Recommender System</a>
+            </nav>
+        </header>
+
+        <div class="container">
+            <h1>Healthcare Recommender System</h1>
+
+            <form id="recommendation-form">
+                <div class="form-group">
+                    <label for="symptoms">Enter your symptoms:</label>
+                    <input type="text" id="symptoms" name="symptoms" placeholder="e.g., Cardiology, Dermatology"
+                        required />
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Enter your location:</label>
+                    <input type="text" id="location" name="location" placeholder="e.g., New York" required />
+                </div>
+
+                <button type="submit" id="submit-btn">Get Recommendations</button>
+            </form>
+
+            <div id="recommendations" class="recommendations">
+                <!-- Recommended doctor and lab will be displayed here -->
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div>
+                <h4>Contact Us</h4>
+                <p>Phone: (91) 9**0</p>
+                <p>Email: medi-connect@gmail.com</p>
+                <h4>Follow Us</h4>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <p>&copy; 2024 MediConnect. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document
+            .getElementById("recommendation-form")
+            .addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const symptoms = document.getElementById("symptoms").value;
+                const location = document.getElementById("location").value;
+
+                fetch("/recommend", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        symptoms: symptoms.split(",").map((symptom) => symptom.trim()),
+                        location: location,
+                    }),
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        const recommendationsDiv =
+                            document.getElementById("recommendations");
+                        recommendationsDiv.innerHTML = "";
+
+                        if (data.doctor && data.lab) {
+                            const doctor = data.doctor;
+                            recommendationsDiv.innerHTML += `
+                    <h2>Recommended Doctor</h2>
+                    <p><strong>Name:</strong> ${doctor.name}</p>
+                    <p><strong>Specialization:</strong> ${doctor.specialization}</p>
+                    <p><strong>Location:</strong> ${doctor.location}</p>
+                `;
+
+                            const lab = data.lab;
+                            recommendationsDiv.innerHTML += `
+                    <h2>Recommended Lab</h2>
+                    <p><strong>Name:</strong> ${lab.name}</p>
+                    <p><strong>Tests Available:</strong> ${lab.tests_available.join(
+                                ", "
+                            )}</p>
+                    <p><strong>Location:</strong> ${lab.location}</p>
+                `;
+                        } else {
+                            recommendationsDiv.innerHTML =
+                                "<p>No suitable doctor or lab found for your symptoms and location.</p>";
+                        }
+                    })
+                    .catch((error) => {
+                        console.error("Error:", error);
+                        document.getElementById("recommendations").innerHTML =
+                            "<p>Something went wrong. Please try again.</p>";
+                    });
+            });
+    </script>
+</body>
+
+</html>
