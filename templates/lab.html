@@ -25,28 +25,39 @@
         }
 
         /* Header styling */
-        header {
+        .header {
+            display: flex;
             width: 100%;
             background-color: #0d47a1;
             color: #fff;
-            padding: 20px;
-            text-align: center;
-            font-size: 28px;
+            padding: 10px;
+            align-items: center;
+            justify-content: space-between;
+            /* text-align: center; */
+            /* font-size: 28px; */
             font-weight: bold;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        /* Footer styling */
-        footer {
-            width: 100%;
-            background-color: #0d47a1;
-            color: #fff;
-            padding: 15px;
-            text-align: center;
-            font-size: 14px;
-            position: fixed;
-            bottom: 0;
-            left: 0;
+        .logo {
+            width: 60px;
+        }
+
+        .nav {
+            margin: 0 15px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            /* flex: 1; */
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+            /* color: #f2f6f9; */
+
+        }
+
+        .nav a {
+            color: #ddd;
         }
 
         /* Container styling */
@@ -158,6 +169,19 @@
             border-radius: 10px;
             margin-bottom: 20px;
         }
+
+        footer {
+            width: 100%;
+            background-color: #0d47a1;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            position: relative;
+            /* Change from fixed to relative */
+            margin-top: auto;
+            /* Added to push the footer to the bottom */
+        }
     </style>
     <!-- Adding Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
@@ -165,7 +189,18 @@
 
 <body>
     <!-- Header -->
-    <header>Medi-Connect - Lab Registration</header>
+    <header class="header">
+        <div class="logo-container">
+            <img src="/static/logo.jpg" alt="Logo" class="logo">
+        </div>
+        <h1 class="title">MediConnect</h1>
+        <nav class="nav">
+            <a href="./index.html">Home</a>
+            <a href="./about.html">About</a>
+            <a href="./resources.html">Resources</a>
+        </nav>
+
+    </header>
 
     <!-- Container -->
     <div class="container">
@@ -238,7 +273,25 @@
 
     <br><br><br>
     <!-- Footer -->
-    <footer>Contact us: info@medi-connect.com | Call: +1-234-567-8900</footer>
+    <footer>
+        <div class="footer">
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>Phone: (91) 9********0</p>
+            <div class="footer-social">
+                <p>Email: medi-connect@gmail.com</p>
+            </div>
+                <h4>Follow Us</h4>
+                <ul>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </ul>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2024 Your Healthcare Clinic. All Rights Reserved.</p>
+    </footer>
 
     <!-- JavaScript to add dynamic test sections -->
     <script>

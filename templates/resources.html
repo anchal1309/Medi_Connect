@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medi-Connect - Resources</title>
+    <style>
+        /* Reset styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Background and layout styling */
+        body {
+            background: #e3f2fd;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header styling */
+        .header {
+            display: flex;
+            width: 100%;
+            background-color: #0d47a1;
+            color: #fff;
+            padding: 10px;
+            align-items: center;
+            justify-content: space-between;
+            /* text-align: center; */
+            /* font-size: 28px; */
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav {
+            margin: 0 15px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            /* flex: 1; */
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+            /* color: #f2f6f9; */
+
+        }
+
+        .nav a {
+            color: #ddd;
+        }
+
+        /* Container styling for resource sections */
+        .resources-container {
+            max-width: 800px;
+            width: 100%;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid #90caf9;
+            margin-top: 20px;
+        }
+
+        /* Section styling */
+        .resource-section {
+            margin-bottom: 25px;
+        }
+
+        .logo {
+            width:60px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            /* Increased width for better readability */
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border: 1px solid #90caf9;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .section-header {
+            font-size: 20px;
+            color: #0d47a1;
+            margin-bottom: 15px;
+            font-weight: bold;
+            border-bottom: 2px solid #0d47a1;
+            padding-bottom: 5px;
+        }
+
+        /* Item styling within each section */
+        .resource-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        .resource-icon {
+            font-size: 30px;
+            color: #0d47a1;
+            flex-shrink: 0;
+        }
+
+        .resource-content h4 {
+            color: #0d47a1;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .resource-content p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Footer styling */
+        footer {
+            width: 100%;
+            background-color: #0d47a1;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            position: relative;
+            /* Change from fixed to relative */
+            margin-top: auto;
+            /* Added to push the footer to the bottom */
+        }
+    </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo-container">
+            <img src="/static/logo.jpg" alt="Logo" class="logo">
+        </div>
+        <h1 class="title">MediConnect - Resources</h1>
+        <nav class="nav">
+            <a href="./index.html">Home</a>
+            <a href="./about.html">About</a>
+            <a href="./resources.html">Resources</a>
+        </nav>
+
+    </header>
+
+    <!-- Resources Container -->
+    <div class="resources-container">
+        <!-- Patient Resources Section -->
+        <div class="resource-section">
+            <div class="section-header">Patient Resources</div>
+
+            <!-- Health Tips -->
+            <div class="resource-item">
+                <i class="resource-icon fas fa-heartbeat"></i>
+                <div class="resource-content">
+                    <h4>Health Tips & Wellness</h4>
+                    <p>
+                        Explore daily wellness tips and guidelines on healthy living,
+                        nutrition, and self-care strategies tailored to different health
+                        conditions.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Managing Medical Records -->
+            <div class="resource-item">
+                <i class="resource-icon fas fa-folder-open"></i>
+                <div class="resource-content">
+                    <h4>Managing Your Medical Records</h4>
+                    <p>
+                        Learn how to manage and secure your health records digitally,
+                        including transferring documents to your healthcare providers and
+                        accessing them conveniently.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Provider Resources Section -->
+        <div class="resource-section">
+            <div class="section-header">Provider Resources</div>
+
+            <!-- Appointment Management -->
+            <div class="resource-item">
+                <i class="resource-icon fas fa-calendar-check"></i>
+                <div class="resource-content">
+                    <h4>Appointment Scheduling & Management</h4>
+                    <p>
+                        Guides for healthcare providers on optimizing appointment
+                        schedules, minimizing wait times, and maximizing patient
+                        satisfaction.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Supply Chain Best Practices -->
+            <div class="resource-item">
+                <i class="resource-icon fas fa-warehouse"></i>
+                <div class="resource-content">
+                    <h4>Supply Chain Best Practices</h4>
+                    <p>
+                        Resources to streamline supply chain processes, reduce costs, and
+                        enhance collaboration between facilities, especially in times of
+                        high demand.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lab & Diagnostic Resources Section -->
+        <div class="resource-section">
+            <div class="section-header">Lab & Diagnostic Resources</div>
+
+            <!-- Sample Collection & Handling -->
+            <div class="resource-item">
+                <i class="resource-icon fas fa-vials"></i>
+                <div class="resource-content">
+                    <h4>Sample Collection & Handling</h4>
+                    <p>
+                        Best practices for sample collection, handling, and
+                        transportation, ensuring sample integrity and reliable diagnostic
+                        results.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Lab Test Guidelines -->
+            <div class="resource-item">
+                <i class="resource-icon fas fa-notes-medical"></i>
+                <div class="resource-content">
+                    <h4>Lab Test Preparation & Guidelines</h4>
+                    <p>
+                        Guidelines on various lab tests, including patient preparation,
+                        necessary instructions, and timing considerations for accurate
+                        results.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technology & Innovation Section -->
+        <div class="resource-section">
+            <div class="section-header">Technology & Innovation</div>
+
+            <!-- AI for Disease Prediction -->
+            <div class="resource-item">
+                <i class="resource-icon fas fa-brain"></i>
+                <div class="resource-content">
+                    <h4>AI in Disease Prediction</h4>
+                    <p>
+                        An overview of AI's role in predicting diseases, identifying risk
+                        factors, and enabling early intervention for improved healthcare
+                        outcomes.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Telemedicine & Virtual Care -->
+            <div class="resource-item">
+                <i class="resource-icon fas fa-video"></i>
+                <div class="resource-content">
+                    <h4>Telemedicine & Virtual Care</h4>
+                    <p>
+                        Resources on how telemedicine enhances patient care by providing
+                        access to remote consultations and continuous monitoring.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer">
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>Phone: (91) 9********0</p>
+            <div class="footer-social">
+                <p>Email: medi-connect@gmail.com</p>
+            </div>
+                <h4>Follow Us</h4>
+                <ul>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </ul>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2024 Your Healthcare Clinic. All Rights Reserved.</p>
+    </footer></body>
+
+</html>
